@@ -1,0 +1,44 @@
+---
+title: "From 7,043 Customer Records to a Retention Playbook"
+publishedAt: "2026-10-30"
+summary: "How I built a churn prediction model and a Power BI dashboard to help a telecom business decide which customers to keep."
+author: "Minu Mukesh K"
+tags: ["data analytics", "machine learning", "power bi"]
+---
+
+Every subscription business has the same quiet problem: customers leave, and by the time anyone notices, it's too late to win them back. For my Customer Churn Prediction & Retention Intelligence project, I wanted to answer a practical question: **which customers are most likely to leave, and what can the business do about it?**
+
+## The Data
+
+I worked with **7,043 telecom customer records**, covering contract types, services, billing and whether each customer churned. Before any modelling, most of the work was the unglamorous part:
+
+- Cleaning missing and inconsistent values with **Pandas**
+- Exploratory data analysis (EDA) to see how churn varied across segments
+- Feature engineering to turn raw columns into signals a model could learn from
+
+## The Model
+
+I compared two classification models in **Scikit-learn**:
+
+- **Logistic Regression**, which is simple, fast and easy to explain to non-technical stakeholders
+- **Random Forest**, which captures interactions between features that a linear model can miss
+
+The final model reached **80% accuracy and 76% recall**. For churn, recall matters more than it looks: missing a customer who is about to leave costs far more than reaching out to one who would have stayed anyway.
+
+## The Dashboard
+
+A model on its own doesn't change decisions, so I built an interactive **Power BI** dashboard that tracks:
+
+- **Churn risk** across customer segments
+- **Contract mix**, to see which plans keep customers longest
+- **Revenue exposure**, to see how much revenue is at risk if high-risk customers leave
+
+This turns the model's predictions into something a retention team can actually act on, focusing campaigns on the high-value segments where keeping a customer matters most.
+
+## What I Took Away
+
+1. **Pick the metric that matches the business cost.** Here that was recall, not just accuracy.
+2. **Explainability earns trust.** A slightly simpler model that stakeholders understand often gets used more.
+3. **The dashboard is the product.** Insights only matter once someone can make a decision with them.
+
+Thanks for reading! If you're hiring for a Data Analyst or BI Analyst role, I'd love to talk. You can reach me through the [contact form](/#contact).
