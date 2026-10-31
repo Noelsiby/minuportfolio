@@ -36,8 +36,8 @@ const HeroSection = () => {
                 <BlurIn delay={0.7}>
                   <p
                     className={cn(
-                      "md:self-start mt-4 font-medium text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "md:self-start mt-4 font-medium text-xs sm:text-sm uppercase tracking-[0.35em]",
+                      "text-[#b76e79] dark:text-[#e8b4a0] cursor-default whitespace-nowrap"
                     )}
                   >
                     Hi, I am
@@ -50,14 +50,16 @@ const HeroSection = () => {
                     <TooltipTrigger asChild>
                       <h1
                         className={cn(
-                          "-ml-[6px] leading-none text-transparent text-slate-800 text-left",
-                          "font-bold text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
-                          "cursor-default text-edge-outline font-display "
+                          "-ml-[4px] mt-2 leading-[0.95] text-foreground text-left",
+                          "font-semibold text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
+                          "cursor-default font-display tracking-tight"
                         )}
                       >
                         {config.author.split(" ")[0]}
                         <br className="md:block hiidden" />
-                        {config.author.split(" ")[1]}
+                        <span className="italic font-normal text-rose-gold pr-3">
+                          {config.author.split(" ")[1]}
+                        </span>
                       </h1>
                     </TooltipTrigger>
                     <TooltipContent
@@ -72,11 +74,11 @@ const HeroSection = () => {
                 <BlurIn delay={1.2}>
                   <p
                     className={cn(
-                      "md:self-start md:mt-4 font-medium text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "md:self-start mt-4 md:mt-6 font-medium text-md text-muted-foreground",
+                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap"
                     )}
                   >
-                    A Data Analyst
+                    Data Analyst <span className="text-[#b76e79] dark:text-[#e8b4a0]">✦</span> BI Analyst
                   </p>
                 </BlurIn>
               </div>

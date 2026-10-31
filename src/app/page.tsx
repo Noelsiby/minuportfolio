@@ -10,11 +10,13 @@ import ProjectsSection from "@/components/sections/projects";
 import EducationCertificationsSection from "@/components/sections/education-certifications";
 import ContactSection from "@/components/sections/contact";
 import HeroSection from "@/components/sections/hero";
+import PhotoCompanion from "@/components/photo-companion";
 
 function MainPage() {
   return (
     <SmoothScroll>
       <AnimatedBackground />
+      <PhotoCompanion />
       <main className={cn("bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>
         <HeroSection />
         <SkillsSection />

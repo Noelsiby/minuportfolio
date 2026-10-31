@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Unbounded } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
@@ -8,17 +8,18 @@ import SiteFrame from "@/components/site-frame";
 import { Providers } from "@/components/providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-/* Body/base font — Space Grotesk, bound to --font-sans (applied as `font-sans`
+/* Body/base font — DM Sans, bound to --font-sans (applied as `font-sans`
  * on <html>). Everything that isn't a heading inherits this. */
-const spaceGroteskSans = Space_Grotesk({
+const spaceGroteskSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-/* Heading font — Unbounded, bound to --font-display and applied to h1–h6. */
-const unbounded = Unbounded({
+/* Heading font — Playfair Display, bound to --font-display and applied to h1–h6. */
+const unbounded = Playfair_Display({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });

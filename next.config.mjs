@@ -23,12 +23,18 @@ const nextConfig = {
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
+      // Long-lived caching only in production: in dev it pins stale chunks
+      // in the browser and hot reload silently stops working.
+      ...(process.env.NODE_ENV === "production"
+        ? [
+            {
+              source: "/_next/static/(.*)",
+              headers: [
+                { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+              ],
+            },
+          ]
+        : []),
     ];
   },
 };

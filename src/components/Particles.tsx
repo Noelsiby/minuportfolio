@@ -150,7 +150,9 @@ export default function Particles({
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
-      context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      // Bigger specks glow rose gold, the rest champagne
+      const tint = size > 1.4 ? "232, 180, 160" : "243, 220, 192";
+      context.current.fillStyle = `rgba(${tint}, ${alpha})`;
       context.current.fill();
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -258,7 +260,7 @@ export default function Particles({
     <div
       className={cn(
         className,
-        "dark:bg-gradient-to-tl from-black via-zinc-600/20 to-black"
+        "dark:bg-gradient-to-tl from-[#0b0610] via-[#3b1830]/40 to-[#0b0610]"
       )}
       ref={canvasContainerRef}
       aria-hidden="true"

@@ -80,6 +80,7 @@ const CERTIFICATIONS = [
 const EducationCertificationsSection = () => {
   return (
     <SectionWrapper
+      id="credentials-section"
       className="flex flex-col items-center justify-center min-h-[100vh] py-20 z-10"
     >
       <div className="w-full max-w-5xl px-4 md:px-8 mx-auto">
