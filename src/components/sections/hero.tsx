@@ -15,6 +15,7 @@ import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 
 import SectionWrapper from "../ui/section-wrapper";
+import HeroPortrait from "../hero-portrait";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -142,10 +143,15 @@ const HeroSection = () => {
                   </div>
                 </div>
               </div>
+              <div className="md:hidden mt-8">
+                <HeroPortrait compact />
+              </div>
             </div>
           )}
         </div>
-        <div className="grid col-span-1"></div>
+        <div className="hidden md:flex col-span-1 items-center justify-center z-[2] pt-16">
+          {!isLoading && <HeroPortrait />}
+        </div>
       </div>
       <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />

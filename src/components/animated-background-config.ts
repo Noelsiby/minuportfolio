@@ -1,14 +1,15 @@
 export type Section = "hero" | "about" | "skills" | "experience" | "projects" | "contact";
 
 export const STATES = {
+  // The hero belongs to Minu's portrait; the keyboard grows in at Tech Stack.
   hero: {
     desktop: {
-      scale: { x: 0.20, y: 0.20, z: 0.20 },
+      scale: { x: 0.001, y: 0.001, z: 0.001 },
       position: { x: 185, y: -100, z: 0 },
       rotation: { x: 0, y: 0, z: 0 },
     },
     mobile: {
-      scale: { x: 0.30, y: 0.30, z: 0.30 },
+      scale: { x: 0.001, y: 0.001, z: 0.001 },
       position: { x: 0, y: -200, z: 0 },
       rotation: { x: 0, y: 0, z: 0 },
     },

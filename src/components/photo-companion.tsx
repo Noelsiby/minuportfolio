@@ -6,7 +6,7 @@ import { usePreloader } from "./preloader";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 // Minu's photo follows the visitor down the page, changing shape in every
-// section: an arch portrait in the hero, a glowing avatar beside the keyboard,
+// section after the hero: a glowing avatar beside the keyboard,
 // a polaroid next to the experience timeline, a graduate in credentials...
 
 type SectionId =
@@ -38,6 +38,7 @@ type Look = {
   // which side of the photo the speech bubble sits on
   bubbleSide?: "left" | "right" | "below";
   cap?: boolean;
+  hidden?: boolean;
 };
 
 const ARCH = "999px 999px 22px 22px";
@@ -45,15 +46,15 @@ const CIRCLE = "999px 999px 999px 999px";
 const POLAROID = "4px 4px 4px 4px";
 
 const DESKTOP: Record<SectionId, Look> = {
+  // the hero has its own big portrait, so the companion waits there unseen
   hero: {
-    left: "77vw",
-    top: "24vh",
-    width: 250,
-    height: 340,
-    radius: ARCH,
+    left: "70vw",
+    top: "40vh",
+    width: 128,
+    height: 128,
+    radius: CIRCLE,
     rotate: 0,
-    bubble: "Hello from Kerala 🌿",
-    bubbleSide: "below",
+    hidden: true,
   },
   skills: {
     left: "6vw",
@@ -108,14 +109,7 @@ const DESKTOP: Record<SectionId, Look> = {
 };
 
 const MOBILE: Record<SectionId, Look> = {
-  hero: {
-    left: "64vw",
-    top: "11vh",
-    width: 104,
-    height: 140,
-    radius: ARCH,
-    rotate: 0,
-  },
+  hero: { left: "80vw", top: "84vh", width: 58, height: 58, radius: CIRCLE, rotate: 0, hidden: true },
   skills: { left: "80vw", top: "84vh", width: 58, height: 58, radius: CIRCLE, rotate: 0 },
   experience: { left: "79vw", top: "82vh", width: 62, height: 76, radius: POLAROID, rotate: 6, polaroid: true },
   projects: { left: "80vw", top: "84vh", width: 58, height: 58, radius: CIRCLE, rotate: -4 },
@@ -185,9 +179,9 @@ const PhotoCompanion = () => {
       className="fixed z-[40] pointer-events-none"
       initial={{ opacity: 0, scale: 0.6, filter: "blur(12px)" }}
       animate={{
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
+        opacity: look.hidden ? 0 : 1,
+        scale: look.hidden ? 0.6 : 1,
+        filter: look.hidden ? "blur(12px)" : "blur(0px)",
         left: look.left,
         top: look.top,
         width: look.width,
@@ -196,9 +190,9 @@ const PhotoCompanion = () => {
       }}
       transition={{
         ...morph,
-        opacity: { duration: 0.8, delay: 1.2 },
-        scale: { duration: 0.8, delay: 1.2 },
-        filter: { duration: 0.8, delay: 1.2 },
+        opacity: { duration: 0.6 },
+        scale: { duration: 0.6 },
+        filter: { duration: 0.6 },
       }}
     >
       {/* soft rose glow behind the photo */}
@@ -216,7 +210,10 @@ const PhotoCompanion = () => {
 
       {/* the frame: transparent for arch/circle, ivory paper for the polaroid */}
       <motion.div
-        className="absolute inset-0 overflow-hidden shadow-2xl shadow-black/50 pointer-events-auto"
+        className={
+          "absolute inset-0 overflow-hidden shadow-2xl shadow-black/50 " +
+          (look.hidden ? "pointer-events-none" : "pointer-events-auto")
+        }
         animate={{
           borderRadius: look.radius,
           backgroundColor: look.polaroid ? "#fbf6ef" : "rgba(251,246,239,0)",
@@ -235,10 +232,10 @@ const PhotoCompanion = () => {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/minu-portrait.webp"
+            src="/assets/minu-studio.webp"
             alt=""
             className="w-full h-full object-cover"
-            style={{ objectPosition: "55% 30%" }}
+            style={{ objectPosition: "56% 22%" }}
             draggable={false}
           />
           {/* warm champagne wash so the photo sits in the palette */}
