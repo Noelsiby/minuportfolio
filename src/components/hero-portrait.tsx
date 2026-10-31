@@ -18,27 +18,19 @@ type Chip = {
   icon: string;
   label: string;
   sub: string;
+  // badges sit low, on her shoulders, so they never cover her face
   className: string;
-  // where the badge sits in the small phone layout (only the last two are shown)
-  compactClassName?: string;
+  compactClassName: string;
   delay: number;
   float: number;
 };
 
 const CHIPS: Chip[] = [
   {
-    icon: "📊",
-    label: "Power BI",
-    sub: "dashboards & DAX",
-    className: "left-[-8%] top-[30%]",
-    delay: 1.9,
-    float: 3.6,
-  },
-  {
     icon: "🎯",
     label: "80% accuracy",
     sub: "churn prediction model",
-    className: "right-[-12%] top-[52%]",
+    className: "right-[-6%] top-[74%]",
     compactClassName: "right-[-30%] top-[78%]",
     delay: 2.1,
     float: 4.2,
@@ -47,7 +39,7 @@ const CHIPS: Chip[] = [
     icon: "🐍",
     label: "Python · SQL",
     sub: "7,043 records analysed",
-    className: "left-[-4%] bottom-[12%]",
+    className: "left-[-14%] top-[56%]",
     compactClassName: "left-[-30%] top-[52%]",
     delay: 2.3,
     float: 3.9,
@@ -72,8 +64,6 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
     mx.set(0);
     my.set(0);
   };
-
-  const chips = compact ? CHIPS.slice(1) : CHIPS;
 
   return (
     <motion.div
@@ -159,10 +149,10 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
         <div className="absolute inset-x-0 -bottom-px h-[16%] bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
         {/* floating glass badges */}
-        {chips.map((chip) => (
+        {CHIPS.map((chip) => (
           <motion.div
             key={chip.label}
-            className={cn("absolute", compact ? chip.compactClassName ?? chip.className : chip.className)}
+            className={cn("absolute", compact ? chip.compactClassName : chip.className)}
             style={{ translateZ: 80 }}
             initial={{ opacity: 0, scale: 0.6, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -172,17 +162,17 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
               className={cn(
                 "flex items-center gap-2 rounded-2xl border border-[#e8b4a0]/30",
                 "bg-[#1a0f1c]/70 backdrop-blur-md shadow-xl shadow-black/40",
-                compact ? "px-2.5 py-1.5" : "px-3.5 py-2.5"
+                compact ? "px-2.5 py-1.5" : "px-2.5 py-1.5 xl:px-3.5 xl:py-2.5"
               )}
               animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
               transition={{ duration: chip.float, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className={compact ? "text-base" : "text-xl"}>{chip.icon}</span>
+              <span className={compact ? "text-base" : "text-base xl:text-xl"}>{chip.icon}</span>
               <span className="flex flex-col leading-tight">
-                <span className={cn("font-semibold text-[#f3dcc0]", compact ? "text-[11px]" : "text-sm")}>
+                <span className={cn("font-semibold text-[#f3dcc0]", compact ? "text-[11px]" : "text-[11px] xl:text-sm")}>
                   {chip.label}
                 </span>
-                <span className={cn("text-[#c9a9b4]", compact ? "text-[9px]" : "text-[11px]")}>
+                <span className={cn("text-[#c9a9b4]", compact ? "text-[9px]" : "text-[9px] xl:text-[11px]")}>
                   {chip.sub}
                 </span>
               </span>
