@@ -22,13 +22,14 @@ const HeroSection = () => {
 
   return (
     <SectionWrapper id="hero" className={cn("relative w-full h-screen")}>
-      <div className="grid md:grid-cols-2">
+      {/* capped width keeps the name and portrait together on wide screens */}
+      <div className="grid md:grid-cols-2 w-full max-w-6xl mx-auto">
         <div
           className={cn(
             "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",
             "col-span-1",
             "flex flex-col justify-start md:justify-center items-center md:items-start",
-            "pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28"
+            "pt-28 sm:pb-16 md:p-20 lg:p-24 xl:py-28 xl:px-16"
           )}
         >
           {!isLoading && (
