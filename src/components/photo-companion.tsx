@@ -232,10 +232,10 @@ const PhotoCompanion = () => {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/minu-studio.webp"
+            src="/assets/minu-blazer-studio.webp"
             alt=""
             className="w-full h-full object-cover"
-            style={{ objectPosition: "56% 22%" }}
+            style={{ objectPosition: "53% 18%" }}
             draggable={false}
           />
           {/* warm champagne wash so the photo sits in the palette */}

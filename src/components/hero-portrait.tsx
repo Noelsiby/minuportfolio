@@ -19,6 +19,8 @@ type Chip = {
   label: string;
   sub: string;
   className: string;
+  // where the badge sits in the small phone layout (only the last two are shown)
+  compactClassName?: string;
   delay: number;
   float: number;
 };
@@ -37,6 +39,7 @@ const CHIPS: Chip[] = [
     label: "80% accuracy",
     sub: "churn prediction model",
     className: "right-[-12%] top-[52%]",
+    compactClassName: "right-[-30%] top-[78%]",
     delay: 2.1,
     float: 4.2,
   },
@@ -45,6 +48,7 @@ const CHIPS: Chip[] = [
     label: "Python · SQL",
     sub: "7,043 records analysed",
     className: "left-[-4%] bottom-[12%]",
+    compactClassName: "left-[-30%] top-[52%]",
     delay: 2.3,
     float: 3.9,
   },
@@ -141,10 +145,10 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
 
         {/* Minu — rises into the frame, head breaking out of the arch */}
         <motion.img
-          src="/assets/minu-cutout.webp"
+          src="/assets/minu-blazer-cutout.webp"
           alt="Minu Mukesh K"
           draggable={false}
-          className="absolute left-1/2 bottom-0 w-[80%] max-w-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
+          className="absolute left-1/2 bottom-0 w-[98%] max-w-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
           style={{ x: "-50%", translateZ: 40 }}
           initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -158,7 +162,7 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
         {chips.map((chip) => (
           <motion.div
             key={chip.label}
-            className={cn("absolute", chip.className)}
+            className={cn("absolute", compact ? chip.compactClassName ?? chip.className : chip.className)}
             style={{ translateZ: 80 }}
             initial={{ opacity: 0, scale: 0.6, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
