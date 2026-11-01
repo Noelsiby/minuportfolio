@@ -135,7 +135,7 @@ const HeroPortrait = ({ compact = false }: { compact?: boolean }) => {
 
         {/* Minu — rises into the frame, head breaking out of the arch */}
         <motion.img
-          src="/assets/minu-blazer-cutout.webp"
+          src="/assets/minu-headshot-cutout.webp"
           alt="Minu Mukesh K"
           draggable={false}
           className="absolute left-1/2 bottom-0 w-[98%] max-w-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
