@@ -27,14 +27,14 @@ const config = {
   ],
   author: "Minu Mukesh",
   email: "minumukeshk@gmail.com",
-  site: "https://minumukesh-portfolio.vercel.app",
+  site: "https://minuportfolio.vercel.app",
 
   // for github stars button
   githubUsername: "Noelsiby",
   githubRepo: "minuportfolio",
 
   get ogImg() {
-    return this.site + "/assets/seo/og-image.png";
+    return this.site + "/assets/seo/og-minu.png";
   },
   social: {
     linkedin: "https://www.linkedin.com/in/minumukesh",
