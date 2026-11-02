@@ -48,11 +48,18 @@ export async function POST(req: Request) {
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: [config.email],
-      subject: "Contact me from portfolio",
+      // hitting Reply in the inbox answers the visitor directly
+      replyTo: zodData.email,
+      subject: `✦ ${zodData.fullName} sent you a message from your portfolio`,
       react: EmailTemplate({
         fullName: zodData.fullName,
         email: zodData.email,
         message: zodData.message,
+        receivedAt: new Intl.DateTimeFormat("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short",
+          timeZone: "Asia/Kolkata",
+        }).format(new Date()),
       }) as React.ReactElement,
     });
 
